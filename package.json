@@ -1,0 +1,51 @@
+{
+  "name": "mcp-svg-to-image",
+  "version": "1.0.0",
+  "description": "MCP server for converting SVG files to raster images for visual analysis",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "mcp-svg-to-image": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node index.js",
+    "release": "release-it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mark/mcp-svg-to-image.git"
+  },
+  "homepage": "https://github.com/mark/mcp-svg-to-image#readme",
+  "bugs": {
+    "url": "https://github.com/mark/mcp-svg-to-image/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "svg",
+    "converter",
+    "image-converter",
+    "sharp",
+    "png",
+    "jpeg",
+    "webp"
+  ],
+  "author": "Mark",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "sharp": "^0.33.5",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "release-it": "^19.2.4"
+  }
+}
