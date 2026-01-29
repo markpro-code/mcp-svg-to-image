@@ -1,6 +1,6 @@
 {
   "name": "mcp-svg-to-image",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "description": "MCP server for converting SVG files to raster images for visual analysis",
   "type": "module",
   "main": "index.js",
@@ -18,11 +18,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mark/mcp-svg-to-image.git"
+    "url": "git+https://github.com/markpro-code/mcp-svg-to-image.git"
   },
-  "homepage": "https://github.com/mark/mcp-svg-to-image#readme",
+  "homepage": "https://github.com/markpro-code/mcp-svg-to-image#readme",
   "bugs": {
-    "url": "https://github.com/mark/mcp-svg-to-image/issues"
+    "url": "https://github.com/markpro-code/mcp-svg-to-image/issues"
   },
   "keywords": [
     "mcp",
@@ -37,6 +37,10 @@
   ],
   "author": "Mark",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "engines": {
     "node": ">=18.0.0"
   },

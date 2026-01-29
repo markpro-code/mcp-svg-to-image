@@ -1,38 +1,53 @@
 # MCP SVG to Image - Quick Start
 
-## ✅ Installation Complete!
+## 📦 Installation
 
-The MCP SVG to Image server has been successfully installed and configured.
+Install the MCP server globally via npm:
 
-## 📍 Location
-
+```bash
+npm install -g mcp-svg-to-image
 ```
-/Users/mark/.config/opencode/mcp/svg-to-image/
+
+Or use with npx (no installation required):
+
+```bash
+npx mcp-svg-to-image
 ```
 
 ## ⚙️ Configuration
 
-The MCP server has been added to your configurations:
+Add the MCP server to your client configuration:
 
 **Cursor** (`~/.cursor/mcp.json`):
 ```json
 {
   "mcpServers": {
     "mcp-svg-to-image": {
-      "command": "node",
-      "args": ["/Users/mark/.config/opencode/mcp/svg-to-image/index.js"]
+      "command": "npx",
+      "args": ["-y", "mcp-svg-to-image"]
     }
   }
 }
 ```
 
-**OpenCode** (`~/.config/opencode/opencode.json`):
+**Claude Desktop** (`~/Library/Application Support/Claude/claude_desktop_config.json`):
 ```json
 {
-  "mcp": {
+  "mcpServers": {
     "mcp-svg-to-image": {
-      "type": "local",
-      "command": ["node", "/Users/mark/.config/opencode/mcp/svg-to-image/index.js"]
+      "command": "npx",
+      "args": ["-y", "mcp-svg-to-image"]
+    }
+  }
+}
+```
+
+**If installed globally:**
+```json
+{
+  "mcpServers": {
+    "mcp-svg-to-image": {
+      "command": "mcp-svg-to-image"
     }
   }
 }
@@ -104,29 +119,35 @@ Convert icon.svg to PNG at 512px width
 ## 🐛 Troubleshooting
 
 ### Server doesn't appear after restart
-- Double-check `~/.cursor/mcp.json` configuration
-- Verify the path to `index.js` is correct
-- Check Cursor's MCP logs for errors
+- Double-check your MCP client configuration file
+- Verify npm/npx is in your PATH
+- Check your client's MCP logs for errors
+- Try restarting your client application
 
 ### Conversion fails
 - Ensure you use absolute paths (not relative)
 - Verify the SVG file is valid XML
 - Check file permissions
 
-### Need to reinstall
+### Need to reinstall or update
 ```bash
-cd /Users/mark/.config/opencode/mcp/svg-to-image
-npm install
+npm install -g mcp-svg-to-image@latest
 ```
 
-## 📖 Additional Documentation
+Or clear npx cache:
+```bash
+npx clear-npx-cache
+npx -y mcp-svg-to-image
+```
 
-- `README.md` - Detailed documentation
-- `SETUP.md` - Installation guide
-- `package.json` - Dependencies and scripts
+## 📖 Additional Resources
+
+- [GitHub Repository](https://github.com/markpro-code/mcp-svg-to-image)
+- [npm Package](https://www.npmjs.com/package/mcp-svg-to-image)
+- [Report Issues](https://github.com/markpro-code/mcp-svg-to-image/issues)
 
 ---
 
-**Status**: ✅ Ready to use (after Cursor restart)  
 **Version**: 1.0.0  
+**License**: MIT  
 **Last Updated**: Jan 29, 2026

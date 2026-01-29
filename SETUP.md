@@ -1,45 +1,84 @@
 # Setup Guide - MCP SVG to Image
 
-## Installation Status
+## Installation
 
-✅ **Installed Successfully!**
+### Option 1: Using npx (Recommended)
 
-The MCP server has been created and configured at:
-- **Location**: `/Users/mark/.config/opencode/mcp/svg-to-image/`
-- **Configuration**: Added to `~/.cursor/mcp.json` and `opencode.json`
+No installation required. The MCP server will be downloaded on-demand:
+
+1. Add to your MCP client configuration
+2. The package will be fetched automatically when needed
+
+### Option 2: Global Installation
+
+Install the package globally:
+
+```bash
+npm install -g mcp-svg-to-image
+```
 
 ## Configuration
 
-The following has been added to your global Cursor MCP configuration (`~/.cursor/mcp.json`):
+Add the MCP server to your client's configuration file:
+
+### Cursor Configuration
+
+Edit `~/.cursor/mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "mcp-svg-to-image": {
-      "command": "bash",
-      "args": [
-        "-c",
-        "cd /Users/mark/.config/opencode/mcp/svg-to-image && node index.js"
-      ]
+      "command": "npx",
+      "args": ["-y", "mcp-svg-to-image"]
     }
   }
 }
 ```
 
-**Note**: The `cd` command is required so Node.js can find the `package.json` file and recognize the ES module format.
+Or if installed globally:
+
+```json
+{
+  "mcpServers": {
+    "mcp-svg-to-image": {
+      "command": "mcp-svg-to-image"
+    }
+  }
+}
+```
+
+### Claude Desktop Configuration
+
+Edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "mcp-svg-to-image": {
+      "command": "npx",
+      "args": ["-y", "mcp-svg-to-image"]
+    }
+  }
+}
+```
 
 ## Next Steps
 
-1. **Restart Cursor** - You need to restart Cursor for the new MCP server to be loaded
+1. **Restart Your MCP Client**
+   - Close and restart Cursor, Claude Desktop, or your MCP-compatible client
+   - This is required for the configuration changes to take effect
 
-2. **Verify Installation** - After restart, you can check if the MCP server is running by:
-   - Looking at the MCP servers list in Cursor
-   - The server should appear as "opencode-svg-converter"
+2. **Verify Installation**
+   - Check your client's MCP servers list
+   - The server should appear as "mcp-svg-to-image"
+   - Look for any error messages in the MCP logs
 
-3. **Test the Tool** - Try converting an SVG file:
-   ```
-   Ask the LLM: "Convert this SVG file to PNG: /path/to/your/file.svg"
-   ```
+3. **Test the Tool**
+   - Try converting an SVG file:
+     ```
+     "Convert /path/to/your/file.svg to PNG"
+     ```
 
 ## Usage
 
@@ -59,33 +98,49 @@ Once configured, the LLM can automatically detect SVG files and convert them for
 
 ## Troubleshooting
 
-### Server doesn't appear in Cursor
-- Make sure you restarted Cursor completely
-- Check `~/.cursor/mcp.json` for correct configuration
-- Verify the path to index.js is correct
+### Server doesn't appear after restart
+- Verify your MCP configuration file syntax is correct
+- Ensure npm/npx is installed and in your PATH
+- Check your client's MCP logs for error messages
+- Try manually running: `npx mcp-svg-to-image` to see any errors
 
 ### Conversion fails
-- Ensure the SVG file path is absolute (not relative)
-- Check that the SVG file is valid XML
-- Look for error messages in Cursor's MCP logs
+- Use absolute paths for SVG files (not relative paths)
+- Verify the SVG file is valid XML
+- Check file permissions
+- Look for error messages in your client's logs
 
-### Dependencies missing
-```bash
-cd /Users/mark/.config/opencode/mcp/svg-to-image
-npm install
-```
+### npx is slow to start
+- Consider installing globally: `npm install -g mcp-svg-to-image`
+- Update configuration to use the global installation
+
+### Permission errors
+- On Unix systems, ensure npm global bin is in PATH
+- Try: `npm config get prefix` to check npm global location
 
 ## Updating
 
-To update dependencies:
+Update to the latest version:
+
 ```bash
-cd /Users/mark/.config/opencode/mcp/svg-to-image
-npm update
+# If using npx (clear cache first)
+npx clear-npx-cache
+# Will fetch latest version on next run
+
+# If installed globally
+npm update -g mcp-svg-to-image
 ```
 
 ## Uninstallation
 
-To remove the MCP server:
-1. Remove the `mcp-svg-to-image` entry from your MCP configuration
-2. Delete the directory: `/Users/mark/.config/opencode/mcp/svg-to-image/`
+Remove the MCP server:
+
+1. Remove the `mcp-svg-to-image` entry from your MCP configuration file
+2. If installed globally: `npm uninstall -g mcp-svg-to-image`
 3. Restart your MCP client
+
+## Requirements
+
+- Node.js >= 18.0.0
+- npm or npx
+- MCP-compatible client (Cursor, Claude Desktop, etc.)

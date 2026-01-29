@@ -1,5 +1,8 @@
 # MCP SVG to Image
 
+[![npm version](https://badge.fury.io/js/mcp-svg-to-image.svg)](https://www.npmjs.com/package/mcp-svg-to-image)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 MCP server for converting SVG files to raster images (PNG/JPEG/WebP) so that LLMs can visually analyze SVG content.
 
 ## Features
@@ -11,9 +14,16 @@ MCP server for converting SVG files to raster images (PNG/JPEG/WebP) so that LLM
 
 ## Installation
 
+Install globally via npm:
+
 ```bash
-cd /Users/mark/.config/opencode/mcp/svg-to-image
-npm install
+npm install -g mcp-svg-to-image
+```
+
+Or use with npx (no installation required):
+
+```bash
+npx mcp-svg-to-image
 ```
 
 ## Configuration
@@ -25,11 +35,8 @@ Add this MCP server to your MCP-compatible client configuration:
 {
   "mcpServers": {
     "mcp-svg-to-image": {
-      "command": "bash",
-      "args": [
-        "-c",
-        "cd /path/to/mcp/svg-to-image && node index.js"
-      ]
+      "command": "npx",
+      "args": ["-y", "mcp-svg-to-image"]
     }
   }
 }
@@ -40,17 +47,23 @@ Add this MCP server to your MCP-compatible client configuration:
 {
   "mcpServers": {
     "mcp-svg-to-image": {
-      "command": "bash",
-      "args": [
-        "-c",
-        "cd /path/to/mcp/svg-to-image && node index.js"
-      ]
+      "command": "npx",
+      "args": ["-y", "mcp-svg-to-image"]
     }
   }
 }
 ```
 
-**Note**: Replace `/path/to/mcp/svg-to-image` with the actual installation path.
+**Alternative (if installed globally):**
+```json
+{
+  "mcpServers": {
+    "mcp-svg-to-image": {
+      "command": "mcp-svg-to-image"
+    }
+  }
+}
+```
 
 ## Usage
 
@@ -92,11 +105,31 @@ Converts an SVG file to a raster image format.
 3. Converts to the specified raster format
 4. Returns the converted image for visual analysis
 
+## Requirements
+
+- Node.js >= 18.0.0
+- npm or npx
+
 ## Dependencies
 
 - `@modelcontextprotocol/sdk`: MCP SDK for building MCP servers
 - `sharp`: High-performance image processing library
+- `zod`: TypeScript-first schema validation
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Issues
+
+If you encounter any problems, please [file an issue](https://github.com/markpro-code/mcp-svg-to-image/issues) on GitHub.
 
 ## License
 
 MIT
+
+## Related
+
+- [Model Context Protocol](https://modelcontextprotocol.io/)
+- [MCP Specification](https://spec.modelcontextprotocol.io/)
+- [Sharp Image Processing](https://sharp.pixelplumbing.com/)
