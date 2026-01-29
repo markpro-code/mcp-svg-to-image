@@ -1,6 +1,6 @@
 {
   "name": "mcp-svg-to-image",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0",
   "description": "MCP server for converting SVG files to raster images for visual analysis",
   "type": "module",
   "main": "index.js",
